@@ -54,7 +54,7 @@ public class MemoDBTest {
     public void test_find() {
         memoDB.insert(new TestEntity("123","name"));
         memoDB.insert(new TestEntity("123","name"));
-        assertThat(memoDB.all().size()).isEqualTo(2);
+        assertThat(memoDB.all().size()).isEqualTo(1);
 
     }
     @Test
