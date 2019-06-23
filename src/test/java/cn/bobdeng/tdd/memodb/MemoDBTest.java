@@ -7,6 +7,7 @@ import org.junit.Before;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -37,6 +38,7 @@ public class MemoDBTest {
         TestEntity entity=new TestEntity("123","name");
         memoDB.insert(entity);
         assertThat(memoDB.all().size()).isEqualTo(1);
-        memoDB.findBy("id","123");
+        Optional<TestEntity> find = memoDB.findBy("id", "123");
+        assertThat(find.isPresent()).isEqualTo(true);
     }
 }

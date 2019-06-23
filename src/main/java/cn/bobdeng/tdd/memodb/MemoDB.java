@@ -25,6 +25,10 @@ public class MemoDB<T> {
     }
 
     public Optional<T> findBy(String key, String value) {
-        return Optional.empty();
+        return datas.values()
+                .stream()
+                .filter(data->value.equals(data.get(key)))
+                .map(data->mapper.from(data))
+                .findFirst();
     }
 }
