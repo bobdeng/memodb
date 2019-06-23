@@ -40,6 +40,9 @@ public class MemoDB<T> {
     }
 
     public void save(T entity) {
-        
+        datas.values().stream()
+                .filter(data->mapper.from(data).equals(entity))
+                .findFirst()
+                .ifPresent(data->data.putAll(mapper.toMap(entity)));
     }
 }
