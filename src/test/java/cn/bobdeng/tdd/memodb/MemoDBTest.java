@@ -30,6 +30,11 @@ public class MemoDBTest {
                 TestEntity entity=new TestEntity(params.get("id"),params.get("name"));
                 return entity;
             }
+
+            @Override
+            public boolean equals(TestEntity a, TestEntity b) {
+                return a.id.equals(b.id);
+            }
         });
     }
 
