@@ -31,4 +31,8 @@ public class MemoDB<T> {
                 .map(mapper::from)
                 .findFirst();
     }
+
+    public void deleteBy(String key, String value) {
+
+    }
 }

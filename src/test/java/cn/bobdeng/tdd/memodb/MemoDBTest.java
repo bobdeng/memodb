@@ -40,5 +40,6 @@ public class MemoDBTest {
         assertThat(memoDB.all().size()).isEqualTo(1);
         Optional<TestEntity> find = memoDB.findBy("id", "123");
         assertThat(find.isPresent()).isEqualTo(true);
+        memoDB.deleteBy("id", "123");
     }
 }
