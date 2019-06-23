@@ -38,4 +38,8 @@ public class MemoDB<T> {
                 .findFirst()
                 .ifPresent(stringMapEntry -> datas.remove(stringMapEntry.getKey()));
     }
+
+    public void save(T entity) {
+        
+    }
 }
