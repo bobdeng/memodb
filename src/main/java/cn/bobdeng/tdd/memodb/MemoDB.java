@@ -49,7 +49,7 @@ public class MemoDB<T> {
 
     private Optional<Map<String, String>> findEntity(T entity) {
         return datas.values().stream()
-                .filter(data->mapper.from(data).equals(entity))
+                .filter(data->mapper.equals(mapper.from(data),entity))
                 .findFirst();
     }
 }
