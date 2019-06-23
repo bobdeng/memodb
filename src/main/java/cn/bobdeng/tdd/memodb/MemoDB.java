@@ -44,8 +44,11 @@ public class MemoDB<T> {
     }
 
     public void save(T entity) {
-        findEntity(entity)
-                .ifPresent(data->data.putAll(mapper.toMap(entity)));
+        Optional<Map<String, String>> values = findEntity(entity);
+        if(values.isPresent()){
+            values.get().putAll(mapper.toMap(entity));
+        }
+        insert(entity);
     }
 
     private Optional<Map<String, String>> findEntity(T entity) {
