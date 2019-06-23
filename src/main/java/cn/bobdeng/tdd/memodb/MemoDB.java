@@ -33,6 +33,9 @@ public class MemoDB<T> {
     }
 
     public void deleteBy(String key, String value) {
-
+        datas.entrySet().stream()
+                .filter(stringMapEntry -> stringMapEntry.getValue().get(key).equals(value))
+                .findFirst()
+                .ifPresent(stringMapEntry -> datas.remove(stringMapEntry.getKey()));
     }
 }
