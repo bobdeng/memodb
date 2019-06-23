@@ -40,11 +40,19 @@ public class MemoDBTest {
 
     @Test
     public void test_crud() {
+        //insert
         TestEntity entity=new TestEntity("123","name");
         memoDB.insert(entity);
         assertThat(memoDB.all().size()).isEqualTo(1);
+        //find
         Optional<TestEntity> find = memoDB.findBy("id", "123");
         assertThat(find.isPresent()).isEqualTo(true);
+        //update
+        entity.name="name2";
+        memoDB.save(entity);
+        //TestEntity entity1 = memoDB.findBy("id", "123").get();
+        assertThat(memoDB.findBy("id", "123").get().name).isEqualTo("name2");
+        //delete
         memoDB.deleteBy("id", "123");
         assertThat(memoDB.findBy("id", "123").isPresent()).isEqualTo(false);
         //entity.name="name2";
