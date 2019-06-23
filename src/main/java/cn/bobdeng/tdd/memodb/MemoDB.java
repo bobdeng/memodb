@@ -1,9 +1,6 @@
 package cn.bobdeng.tdd.memodb;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class MemoDB<T> {
@@ -25,5 +22,9 @@ public class MemoDB<T> {
                 .stream()
                 .map(data -> mapper.from(data))
                 .collect(Collectors.toList());
+    }
+
+    public Optional<T> findBy(String key, String value) {
+        return Optional.empty();
     }
 }
