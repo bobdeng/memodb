@@ -10,7 +10,7 @@ public class MemoDB<T> {
 
     public MemoDB(Mapper<T> mapper) {
         this.mapper = mapper;
-        datas = new HashMap<String, Map<String, String>>();
+        datas = new HashMap<>();
     }
 
     public void insert(T entity) {
