@@ -28,7 +28,7 @@ public class MemoDB<T> {
         return datas.values()
                 .stream()
                 .filter(data->value.equals(data.get(key)))
-                .map(data->mapper.from(data))
+                .map(mapper::from)
                 .findFirst();
     }
 }
