@@ -12,14 +12,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(JUnit4.class)
 public class MemoDBTest {
+
+    private MemoDB memoDB;
+
     @Before
     public void setup() {
-
-    }
-
-    @Test
-    public void test() {
-        MemoDB memoDB=new MemoDB(new Mapper<TestEntity>() {
+        memoDB = new MemoDB(new Mapper<TestEntity>() {
             public Map<String, String> toMap(TestEntity o) {
                 Map<String,String> values=new HashMap<>();
                 values.put("id",o.id);
@@ -32,6 +30,10 @@ public class MemoDBTest {
                 return entity;
             }
         });
+    }
+
+    @Test
+    public void test() {
         TestEntity entity=new TestEntity("123","name");
         memoDB.insert(entity);
         assertThat(memoDB.all().size()).isEqualTo(1);
