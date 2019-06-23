@@ -14,6 +14,9 @@ public class MemoDB<T> {
     }
 
     public void insert(T entity) {
+        if (findEntity(entity).isPresent()) {
+            return;
+        }
         datas.put(UUID.randomUUID().toString(), mapper.toMap(entity));
     }
 
@@ -40,9 +43,13 @@ public class MemoDB<T> {
     }
 
     public void save(T entity) {
-        datas.values().stream()
-                .filter(data->mapper.from(data).equals(entity))
-                .findFirst()
+        findEntity(entity)
                 .ifPresent(data->data.putAll(mapper.toMap(entity)));
+    }
+
+    private Optional<Map<String, String>> findEntity(T entity) {
+        return datas.values().stream()
+                .filter(data->mapper.from(data).equals(entity))
+                .findFirst();
     }
 }
