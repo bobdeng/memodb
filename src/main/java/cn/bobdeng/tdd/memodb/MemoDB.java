@@ -60,4 +60,11 @@ public class MemoDB<T> {
                 .filter(filter)
                 .collect(Collectors.toList());
     }
+
+    public void delete(T entity) {
+        datas.entrySet().stream()
+                .filter(entry->mapper.equals(mapper.from(entry.getValue()),entity))
+                .findFirst()
+                .ifPresent(entry->datas.remove(entry.getKey()));
+    }
 }
