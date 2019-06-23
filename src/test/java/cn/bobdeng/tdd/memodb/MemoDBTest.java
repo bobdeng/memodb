@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(JUnit4.class)
 public class MemoDBTest {
 
-    private MemoDB memoDB;
+    private MemoDB<TestEntity> memoDB;
 
     @Before
     public void setup() {
