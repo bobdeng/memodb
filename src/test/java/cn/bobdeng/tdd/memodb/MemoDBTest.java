@@ -39,7 +39,7 @@ public class MemoDBTest {
     }
 
     @Test
-    public void test() {
+    public void test_crud() {
         TestEntity entity=new TestEntity("123","name");
         memoDB.insert(entity);
         assertThat(memoDB.all().size()).isEqualTo(1);
@@ -47,8 +47,7 @@ public class MemoDBTest {
         assertThat(find.isPresent()).isEqualTo(true);
         memoDB.deleteBy("id", "123");
         assertThat(memoDB.findBy("id", "123").isPresent()).isEqualTo(false);
-        entity.name="name2";
-        memoDB.save(entity);
+       
     }
     @Test
     public void test_find() {
