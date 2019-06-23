@@ -62,7 +62,7 @@ public class MemoDBTest {
         memoDB.insert(new TestEntity("123","name1"));
         memoDB.insert(new TestEntity("112","name2"));
         memoDB.insert(new TestEntity("113","hello"));
-       // assertThat(memoDB.search((entity)->entity.name.contains("name")).size()).isEqualTo(2);
+        assertThat(memoDB.search((entity)->entity.name.contains("name")).size()).isEqualTo(2);
 
     }
 }

@@ -1,6 +1,7 @@
 package cn.bobdeng.tdd.memodb;
 
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class MemoDB<T> {
@@ -51,5 +52,12 @@ public class MemoDB<T> {
         return datas.values().stream()
                 .filter(data->mapper.equals(mapper.from(data),entity))
                 .findFirst();
+    }
+    public List<T> search(Predicate<T> filter){
+        return datas.values()
+                .stream()
+                .map(data->mapper.from(data))
+                .filter(filter)
+                .collect(Collectors.toList());
     }
 }
