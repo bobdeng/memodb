@@ -50,4 +50,10 @@ public class MemoDBTest {
         entity.name="name2";
         memoDB.save(entity);
     }
+    @Test
+    public void test_find() {
+        TestEntity entity=new TestEntity("123","name");
+        memoDB.insert(entity);
+
+    }
 }
